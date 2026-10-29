@@ -1,0 +1,391 @@
+IMPORTANT: This is a feature enhancement task. Do not delete, simplify away, or replace existing functionality.
+
+You are a senior full-stack engineer working on my project “FinVault”, a standalone personal finance application built with FastAPI + SQLite + Jinja2/HTMX.
+
+The app already has working modules and UI. Your task is to EXTEND and FIX the application safely — NOT rewrite it.
+
+--------------------------------------------------
+OBJECTIVES
+--------------------------------------------------
+You must implement the following:
+
+1. Upgrade the Expenses module into an analytics + insight-driven system
+2. Add trend analytics (monthly + yearly)
+3. Add rule-based “GenAI-like” spending insights (offline)
+4. Add bulk upload for expenses
+5. Fix the shared header search bar (currently not working)
+6. FIX and COMPLETE the Dashboard Health Score implementation
+
+--------------------------------------------------
+CRITICAL RULE (VERY IMPORTANT)
+--------------------------------------------------
+DO NOT remove, break, or rewrite any existing features.
+
+- Existing CRUD must remain intact
+- Existing tables, routes, and UI must continue working
+- Existing page layouts must remain unchanged
+- Add new features in a backward-compatible way
+- Modify existing files only (no parallel systems)
+
+This is enhancement + bug fixing, not redesign.
+
+--------------------------------------------------
+PROJECT CONTEXT
+--------------------------------------------------
+- Backend: FastAPI
+- DB: SQLite
+- Architecture: services + repositories + schemas + API
+- Frontend: Jinja2 + HTMX + Chart.js
+- Offline app (localhost only)
+- No external APIs allowed
+- Currency stored in paise (INTEGER)
+- Existing Expense CRUD already implemented
+- Shared header search bar exists but NOT working
+
+--------------------------------------------------
+1. EXPENSES — ANALYTICS UPGRADE
+--------------------------------------------------
+
+Convert expenses page from:
+→ raw transaction list
+
+Into:
+→ analytics + insights + decision support
+
+--------------------------------------------------
+SUMMARY SECTION
+--------------------------------------------------
+Add:
+- Total expenses
+- Avg daily spend
+- Highest category
+- Transaction count
+
+Dynamic based on:
+- selected trend type
+- selected time period
+
+--------------------------------------------------
+TREND DROPDOWN
+--------------------------------------------------
+Add dropdown:
+- Month-to-Month
+- Year-to-Year
+
+Behavior:
+
+Monthly:
+- show monthly totals within selected year
+
+Yearly:
+- show yearly totals across years
+
+Backend:
+trend_type = "monthly" | "yearly"
+
+Optional params:
+- year
+- month
+
+--------------------------------------------------
+TREND ANALYTICS
+--------------------------------------------------
+
+Monthly:
+- monthly totals
+- MoM change %
+- highest / lowest month
+
+Yearly:
+- yearly totals
+- YoY change %
+- highest / lowest year
+
+--------------------------------------------------
+CATEGORY ANALYTICS
+--------------------------------------------------
+- total per category
+- % distribution
+- top 3 categories
+- category change vs previous period
+
+Charts:
+- Pie chart
+- Bar chart
+
+--------------------------------------------------
+INSIGHTS ENGINE (GENAI-LIKE, OFFLINE)
+--------------------------------------------------
+
+Implement rule-based function:
+
+generate_spending_insights(...)
+
+Return:
+List[str]
+
+Rules:
+- spending increase detection
+- category spike detection
+- top category insight
+- savings suggestion
+- top 3 categories
+
+Example:
+- "Food spending increased by 20%"
+- "You can save ₹1500 by reducing top categories"
+
+NO real AI API used
+
+--------------------------------------------------
+COMPARISON LOGIC
+--------------------------------------------------
+
+Monthly:
+compare month vs previous month
+
+Yearly:
+compare year vs previous year
+
+Return:
+- % change
+- category increases/decreases
+
+--------------------------------------------------
+2. BULK UPLOAD EXPENSES
+--------------------------------------------------
+
+Add CSV upload support
+
+Fields:
+- expense_date
+- category
+- amount
+- description
+- notes
+
+Behavior:
+- convert ₹ → paise
+- map category
+- create if not exists
+- partial success allowed
+
+Validation:
+- date format
+- amount > 0
+- required fields
+
+Endpoint:
+POST /api/v1/expenses/bulk-upload
+
+Response:
+{
+  "success_count": X,
+  "failed_count": Y,
+  "errors": [...]
+}
+
+--------------------------------------------------
+3. DASHBOARD HEALTH SCORE (FIX)
+--------------------------------------------------
+
+The health score currently:
+- exists in UI
+- likely static / incomplete
+
+You must FIX and IMPLEMENT it fully.
+
+--------------------------------------------------
+IMPLEMENT HEALTH SCORE SERVICE
+--------------------------------------------------
+
+Create / update:
+
+health_score_service.calculate(user_id)
+
+--------------------------------------------------
+FORMULA
+--------------------------------------------------
+
+Health Score =
+(diversification * 0.3) +
+(risk_balance * 0.3) +
+(liquidity * 0.2) +
+(insurance * 0.2)
+
+--------------------------------------------------
+CALCULATIONS
+--------------------------------------------------
+
+Diversification:
+- based on number & distribution of asset types
+
+Risk Balance:
+- depends on asset mix (equity vs safe)
+
+Liquidity:
+- compare liquid assets vs monthly expenses
+- ideal: 6 months emergency fund
+
+Insurance:
+- if missing → return default / partial score
+
+--------------------------------------------------
+DATA SOURCES
+--------------------------------------------------
+- assets table
+- expenses table
+
+--------------------------------------------------
+BEHAVIOR
+--------------------------------------------------
+- update when data changes
+- do not return 0 if missing data
+- return partial score instead
+
+--------------------------------------------------
+OUTPUT
+--------------------------------------------------
+
+Return:
+
+{
+  "score": 74,
+  "status": "Good",
+  "insights": [
+    "Diversification is strong",
+    "Liquidity is low",
+    "Consider increasing emergency fund"
+  ]
+}
+
+--------------------------------------------------
+INTEGRATION
+--------------------------------------------------
+- Connect to dashboard
+- Replace any hardcoded values
+- Do NOT change UI layout
+
+--------------------------------------------------
+4. GLOBAL SEARCH BAR FIX
+--------------------------------------------------
+
+The header search bar exists but is NOT working.
+
+--------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------
+
+- Debug existing implementation
+- Do NOT recreate UI
+- Fix backend/frontend wiring
+
+--------------------------------------------------
+BEHAVIOR
+--------------------------------------------------
+
+Search should:
+- Work across all pages
+- Be context-aware
+
+Examples:
+- Expenses page → filter expenses
+- Assets page → filter assets
+
+--------------------------------------------------
+IMPLEMENTATION
+--------------------------------------------------
+
+Option 1:
+GET /api/v1/search?q=...&context=...
+
+Option 2:
+Use existing module-level filters
+
+--------------------------------------------------
+RULES
+--------------------------------------------------
+- Do not remove search UI
+- Do not break existing pages
+- Use HTMX for updates
+- Keep reusable logic
+
+--------------------------------------------------
+5. FRONTEND CHANGES
+--------------------------------------------------
+
+Expenses page must include:
+
+Controls:
+- trend dropdown
+- month/year selectors
+
+Summary cards
+
+Charts:
+- line (trend)
+- pie (category)
+- bar (top categories)
+
+Insights section
+
+Expense table (unchanged)
+
+Bulk upload section
+
+Search bar (working)
+
+--------------------------------------------------
+6. API ENDPOINTS
+--------------------------------------------------
+
+GET /api/v1/expenses/analytics  
+POST /api/v1/expenses/bulk-upload  
+Search endpoint (shared or modular)
+
+--------------------------------------------------
+7. IMPLEMENTATION RULES
+--------------------------------------------------
+
+- Modify existing files only
+- Do NOT rebuild project
+- Keep SQLite compatible
+- Use paise internally
+- Ensure modular clean code
+- Maintain performance
+- Preserve ALL existing features
+
+--------------------------------------------------
+8. OUTPUT FORMAT
+--------------------------------------------------
+
+Provide:
+
+1. Files to modify
+2. Search bug root cause
+3. Repository changes
+4. Service layer code
+5. Schema changes
+6. API code
+7. Jinja template updates
+8. Chart.js integration
+9. Bulk upload logic
+10. Health score implementation
+11. Example responses
+12. Backward compatibility notes
+
+IMPORTANT:
+- Give code, not theory
+- Minimal-diff changes only
+- Extend existing logic
+
+--------------------------------------------------
+FINAL INSTRUCTION
+--------------------------------------------------
+
+- Use my existing project structure
+- Do NOT generate a separate system
+- Fix search (do not recreate it)
+- Replace mock health score with real logic
+- Add analytics on top of existing expenses
+- Keep everything backward-compatible

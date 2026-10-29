@@ -1,0 +1,397 @@
+You are a senior product designer, UX strategist, and solution architect for a modern personal finance and wealth management platform.
+
+Design a new module called **“Loans & Liabilities”**.
+
+---
+
+# MODULE PURPOSE
+The Loans & Liabilities module should help users:
+- Track all outstanding loans and liabilities
+- Monitor repayment progress
+- Manage EMIs and due dates
+- Analyze debt burden
+- Record prepayments
+- Understand how liabilities impact their overall net worth
+
+The final product should feel like a **modern debt management and liability intelligence system integrated into a wealth management platform**.
+
+---
+
+# DESIGN GOALS
+1. Provide clear visibility of debt at all times
+2. Make repayment progress intuitive and motivating
+3. Enable proactive EMI and repayment management
+4. Help users understand financial health and risk
+5. Integrate liabilities seamlessly with net worth calculations
+6. Offer actionable insights and recommendations
+7. Keep the interface clean, modern, and data-driven
+
+---
+
+# CRITICAL REQUIREMENTS
+
+## 1) Liabilities Dashboard
+Design a dashboard with summary cards showing:
+- Total Outstanding Debt
+- Total Monthly EMI
+- Total Interest Payable
+- Active Loans Count
+- Debt-to-Income Ratio
+- Loan Health Score
+
+Add:
+- Liability distribution by loan type (chart)
+- Outstanding balance breakdown (chart)
+- EMI trend analysis (chart)
+- Alerts for overdue EMIs or high debt indicators
+
+**Must include a prominent “Add Loan” button for quick entry.**
+
+---
+
+## 2) Loan Portfolio Management
+Allow users to:
+- Add loans
+- View loans
+- Edit loans
+- Delete loans
+- Search and filter loans
+
+Supported categories:
+- Home Loan
+- Education Loan
+- Vehicle Loan
+- Personal Loan
+- Credit Card Debt
+- Gold Loan
+- Business Loan
+- Other Loan
+
+For each loan collect:
+- Loan Type
+- Loan Provider / Bank
+- Loan Account Number (Optional)
+- **Borrower Name (Policy Holder equivalent for loans)**
+- Original Loan Amount
+- Outstanding Amount
+- Interest Rate (%)
+- EMI Amount
+- Loan Start Date
+- Loan End Date / Maturity Date
+- Remaining Tenure (Months)
+- Prepayment Amount (Optional)
+- Notes
+
+Suggest additional fields:
+- Interest type (fixed/floating)
+- Processing fee
+- Co-applicant details
+- Credit score impact
+- Collateral type
+- EMI auto-debit enabled
+- Loan status (Active/Closed/Defaulted)
+
+**Include “Add Loan” button here as well.**
+
+---
+
+## 3) Loan Details Screen
+When a loan is selected, display:
+- Loan Information
+- Borrower Name
+- Original Loan Amount
+- Outstanding Balance
+- Interest Rate
+- EMI details
+- Remaining tenure
+- Total interest payable
+- Prepayment history
+- Payment schedule / amortization view
+- Loan status (Active / Closed / Overdue)
+
+Include actions:
+- Record EMI payment
+- Record prepayment
+- Close loan
+- Edit details
+
+---
+
+## 4) EMI Tracking
+Design a dedicated EMI tracking section:
+- Upcoming EMI payments
+- Overdue EMIs
+- EMI calendar view
+- Next due date
+- Monthly repayment summary
+
+Include:
+- Reminder indicators
+- Payment status tracking (Paid / Due / Overdue)
+- Auto-pay status indicator
+- Quick pay / mark paid option
+
+---
+
+## 5) Prepayment Analysis
+Allow users to record prepayments and show:
+- Total prepayments made
+- Interest saved
+- Tenure reduced
+- Updated outstanding balance
+
+Include:
+- Visual comparison (before vs after prepayment)
+- Recommendation engine suggesting optimal prepayment timing
+
+---
+
+## 6) Debt Health Analysis
+Calculate:
+- Debt-to-Income Ratio
+- Debt-to-Asset Ratio
+- EMI-to-Income Ratio
+- Liability contribution to net worth
+
+Provide:
+- Threshold indicators (safe / moderate / high risk)
+- Recommendations when thresholds are exceeded
+- Actionable suggestions such as:
+  - Increase prepayments
+  - Refinance loan
+  - Reduce high-interest debt
+
+---
+
+## 7) Liability Impact on Net Worth
+Integrate liabilities with assets:
+
+Net Worth = Total Assets − Total Liabilities
+
+Display:
+- Current net worth
+- Total assets
+- Total liabilities
+- Net worth trend over time
+
+Include visualizations:
+- Asset vs liability comparison
+- Trend graph
+- Debt reduction impact simulation
+
+---
+
+## 8) Search & Filtering
+Allow filtering by:
+- Loan Type
+- Bank / Provider
+- Status (Active / Closed)
+- Remaining Tenure
+- Interest Rate Range
+
+Also allow:
+- Search by borrower name
+- Search by loan account number
+
+---
+
+## 9) USER EXPERIENCE REQUIREMENTS
+- Simple, intuitive layout
+- Dedicated loan details view
+- Clear outstanding balance visibility
+- EMI reminders and due indicators
+- Visual debt analytics
+- Seamless integration with asset/net worth view
+- Quick actions from dashboard
+
+---
+
+# AGE-BASED INSIGHTS REQUIREMENT
+Include personalized insights based on age or life stage:
+
+Examples:
+- Early-stage users: education loans, starter loans, credit discipline
+- Mid-career users: home loans, debt optimization, liability balancing
+- Family stage users: managing multiple EMIs and risk exposure
+- Pre-retirement users: debt reduction priority, minimizing liabilities
+- Senior users: debt-free planning
+
+Important:
+- Use age only for financial guidance and personalization
+- Do not discriminate
+- Provide advisory insights only
+- Ensure privacy and consent
+
+Show:
+1. How age is captured or inferred
+2. Where insights appear in UI
+3. How recommendations change
+
+---
+
+# ARCHITECTURE CHANGE REQUIREMENT
+
+## A. Frontend Changes
+Add new module and routes:
+- Liabilities Dashboard
+- Loan Portfolio
+- Loan Details
+- Add/Edit Loan
+- EMI Tracking
+- Prepayment Analysis
+- Debt Health Analysis
+- Net Worth Integration
+
+Reusable components:
+- Loan cards
+- EMI widgets
+- Status badges
+- Health score cards
+- Charts
+- Calendar
+
+---
+
+## B. Backend Services
+Propose:
+- Loan Management Service
+- EMI Tracking Service
+- Prepayment Engine
+- Debt Health Engine
+- Net Worth Integration Service
+- Notification Service
+
+---
+
+## C. Data Model / Schema
+Entities:
+- User
+- Loan
+- Borrower
+- EMI Schedule
+- Payment History
+- Prepayment Record
+- Debt Metrics Snapshot
+- Net Worth Snapshot
+
+Loan entity must include:
+- Borrower Name
+- Loan Type
+- Provider
+- Account Number
+- Original Amount
+- Outstanding Amount
+- Interest Rate
+- EMI Amount
+- Start Date
+- End Date
+- Status
+- Notes
+
+Explain whether Borrower should be:
+- string OR
+- linked profile (preferred for multi-person loans)
+
+---
+
+## D. API Design
+Include endpoints:
+- Create loan
+- Update loan
+- Delete loan
+- Get loans
+- Get loan by ID
+- Record EMI
+- Record prepayment
+- Get EMI schedule
+- Get dashboard summary
+- Calculate debt health metrics
+- Get net worth
+
+Include request/response examples where needed.
+
+---
+
+## E. Notifications
+Support:
+- EMI reminders
+- Overdue alerts
+- Loan closure notifications
+- High-risk debt alerts
+- Optimization suggestions
+
+Channels:
+- In-app
+- Push
+- Email
+
+Include scheduling logic and snooze support.
+
+---
+
+## F. Security & Privacy
+Include:
+- Encryption of financial data
+- Access control
+- PII protection
+- Secure storage of loan details
+- Audit logs
+
+---
+
+# PRODUCT OUTPUT REQUIREMENTS
+
+Provide response in this structure:
+
+## 1. Executive Summary
+## 2. Product Vision
+## 3. Information Architecture
+## 4. Dashboard Design
+## 5. Loan Portfolio Design
+## 6. Loan Details Design
+## 7. EMI Tracking Design
+## 8. Prepayment Analysis Design
+## 9. Debt Health Analysis
+## 10. Net Worth Integration
+## 11. Search & Filtering
+## 12. Age-Based Insights
+## 13. Architecture Changes
+### Frontend
+### Backend
+### Schema
+### API
+### Notifications
+### Security
+## 14. UI Components
+## 15. User Flows
+## 16. Edge Cases & Empty States
+## 17. Visual Design Direction
+## 18. Final Recommendations
+
+---
+
+# DESIGN TONE
+The system should feel:
+- Modern
+- Analytical
+- Clear
+- Financially intelligent
+- Motivating (help users reduce debt)
+- Integrated with wealth tracking
+
+---
+
+# FINAL REQUIREMENTS
+Ensure the design explicitly includes:
+- “Add Loan” button
+- Borrower Name
+- Multi-loan management
+- EMI tracking
+- Prepayment insights
+- Net worth integration
+
+Also ensure the output is:
+- structured
+- actionable
+- implementation-ready
+``

@@ -1,0 +1,240 @@
+1) In signin page forgot password is not working it is redirecting inside the dashboard layout but no data is getting displayed it is not redirecting to security questions answering page. 
+
+2) In dashboard page "Income vs Expense" Bar graph only 6 months data is available but the Income vs Expense chart should include a period selection dropdown allowing users to view data for the past 6 months, past 12 months, or a specific year. When a full year is selected, the chart should display all twelve months and support year-over-year comparison to help users analyze spending and income trends across different years.
+
+3) When **All** is selected, the dashboard displays the overall portfolio allocation using a doughnut chart, providing a consolidated view of all asset categories. When a specific asset category is selected, the portfolio allocation chart is replaced with an asset-specific doughnut chart showing the internal distribution of that asset. For example, selecting **Equity** displays the allocation across stocks such as Infosys (40%), IRCTC (30%), HDFC Bank (20%), and TCS (10%), while selecting **Mutual Fund** shows the distribution across individual fund schemes. This drill-down approach enables users to seamlessly move from portfolio-level insights to detailed asset composition.
+
+4) The column of **Investment Date** is not getting displayed in the tabular format of asset information display.
+
+
+5) Once a account is created for the first time the we are not able to create new account no option to signup/ create new account in the signin page, even after manual travelling to /welcome route and clicking the ""Create Account"" option is not working it is getting redirected to the /login only which restricts to one user only having one account in one device.
+
+6) Yahoo finance API integration/ any other API integration for fetching the current value of the assets, and the asset types which requires fetching the current value are Equity, Mutual Funds, Sovereign Gold Bonds, and Digital Gold.
+
+7) Mutual Fund : 
+
+--------------------------------------------------
+Add Asset (Mutual Fund) screen
+--------------------------------------------------
+
+Asset Type * (Mutual Fund)(chosen form the dropdown option)
+
+Fund Name *
+Units Held *
+Purchase NAV (₹) *
+Investment Date *
+
+ISIN Code (Optional)
+NSE/BSE Ticker (Optional)
+
+☐ This Asset Has an Active SIP
+
+(Visible only when SIP is enabled)
+Monthly SIP Amount (₹)
+
+Notes (Optional)
+
+--------------------------------------------------
+Auto-Calculated by System
+--------------------------------------------------
+
+Invested Amount = Units Held × Purchase NAV
+
+Current NAV = Retrieved from Mutual Fund API / Market Data Source
+
+Current Value = Units Held × Current NAV
+
+Profit / Loss = Current Value − Invested Amount
+
+Profit / Loss % = (Profit / Loss ÷ Invested Amount) × 100
+
+--------------------------------------------------
+Display Logic in Asset Table
+--------------------------------------------------
+
+If SIP Enabled:
+Display → "SIP ₹<Monthly SIP Amount>/mo"
+Example:
+SIP ₹2,000/mo
+
+If SIP Disabled and Monthly SIP Amount was never configured:
+Display → "Lump Sum"
+Example:
+Lump Sum
+
+If SIP Disabled but Monthly SIP Amount exists from a previously active SIP:
+Display → "SIP Paused"
+Example:
+SIP Paused
+
+--------------------------------------------------
+Edit Asset (Mutual Fund) fields
+--------------------------------------------------
+
+Units Held
+Purchase NAV (₹)
+Investment Date
+
+☑ SIP Enabled
+(Visible when SIP Enabled)
+Monthly SIP Amount (₹)
+
+Notes
+
+Below are the additional points to consider:
+If the SIP is Disabled with the edit option then the table logic should be changed and it should display asset paused.
+
+8) Equity :
+
+Equity – Add Asset Screen Changes
+
+Remove the Invested Amount and Current Value input fields, as Average Purchase Price Per Share and Quantity / Shares Held are already available. Invested Amount should be automatically calculated using Quantity × Average Purchase Price, while Current Value should be fetched using market data APIs. Add an optional SIP Enabled checkbox and display the Monthly SIP Amount field only when SIP is enabled.
+
+Equity – Edit Asset Screen Changes
+
+Remove the editable Invested Amount and Current Value fields. Allow users to edit only Quantity / Shares Held, Average Purchase Price Per Share, Investment Date, SIP Enabled status, Monthly SIP Amount, and Notes. Users should be able to enable, disable, pause, or modify the SIP amount. When SIP is active, display "SIP ₹X/mo" in the asset table. If no SIP was ever configured, display "Lump Sum". If a previously active SIP is disabled, display "SIP Paused".
+
+9) Real Estate : 
+
+Real Estate – Edit Asset Screen Changes
+
+Remove the Quantity field entirely, as quantity is not relevant for real estate assets. Replace the current Edit Asset screen with editable fields for Property Name, Area (sq. ft.), Location / Address, Current Value (₹), Purchase Date, and Notes. The Purchase Price (Invested Amount) should remain read-only because it represents the original acquisition cost, while Current Value should remain editable so users can periodically update the property's estimated market value. This allows Profit/Loss and portfolio metrics to be recalculated automatically whenever the property valuation changes.
+
+10) Physical Gold : 
+
+Physical Gold – Add Asset Screen Changes
+
+The current Add Asset screen should be updated to include a Photo Upload / Camera Capture feature, as documenting physical assets through photographs is a mandatory project requirement. The Invested Amount field should be removed because it can be automatically calculated using Weight (grams) × Buy Price Per Gram. However, the Current Value field should remain as a user input because the actual value of jewellery depends on factors such as making charges, resale value, gemstones, and jeweller-specific pricing, which cannot be accurately determined using a standard gold-rate API. The final Add Asset screen should collect Asset Name, Weight (grams), Purity, Buy Price Per Gram, Current Estimated Value, Purchase Date, Photo Upload / Camera Capture, and Notes.
+
+Physical Gold – Edit Asset Screen Changes
+
+The current Edit Asset screen should be redesigned to remove the generic Quantity and Invested Amount fields. Instead, users should be able to edit Weight (grams), Purity, Buy Price Per Gram, Current Estimated Value, Purchase Date, Asset Photos, and Notes. Any change to the weight, purity, purchase price, or current estimated value should automatically refresh the portfolio metrics. Asset photographs should also be editable so that users can add, replace, or remove jewellery images whenever required.
+
+
+11) Digital Gold : 
+
+Digital Gold – Add Asset Screen Changes
+
+The current Add Asset screen should be updated to remove the Invested Amount and Current Value input fields, as both values can be calculated automatically. The form should collect Asset Name, Quantity (grams), Buy Price Per Gram, Investment Date, and Notes. Since Digital Gold supports recurring investments, an optional SIP Enabled checkbox should be added. When SIP is enabled, a Monthly SIP Amount field should be displayed. The system should automatically calculate Invested Amount using Quantity × Buy Price Per Gram and estimate the Current Value using the latest gold rate retrieved from a market data source.
+
+Digital Gold – Edit Asset Screen Changes
+
+The current Edit Asset screen should be updated to remove the editable Invested Amount and Current Value fields. Users should be able to edit Quantity (grams), Buy Price Per Gram, Investment Date, SIP Enabled status, Monthly SIP Amount, and Notes. Users should also be able to enable, disable, pause, or modify the SIP amount. Any changes to quantity, purchase price, or SIP settings should automatically refresh the valuation and portfolio metrics.
+
+Digital Gold – Asset Table Display Logic
+
+If SIP is enabled:
+Display → SIP ₹<Monthly SIP Amount>/mo
+
+Example:
+SIP ₹2,000/mo
+
+If SIP was never configured:
+Display → No Active SIP
+
+Example:
+No Active SIP
+
+If SIP was previously configured but later disabled:
+Display → SIP Paused
+
+Example:
+SIP Paused
+
+
+12) Sovereign Gold Bond :
+
+Sovereign Gold Bond – Add Asset Screen Changes
+
+The current Add Asset screen should be updated to remove the Invested Amount and Current Value input fields, as both values can be calculated automatically. The form should collect Bond Name, ISIN Code (Optional), NSE/BSE Ticker (Optional), Bonds Held (Units), Issue Price (₹/Bond), Issue / Purchase Date, Coupon Rate (%), Maturity Date, and Notes. The system should automatically calculate the Invested Amount using Bonds Held × Issue Price, while the Current Value should be derived using the latest market price of the Sovereign Gold Bond fetched from a market data source.
+
+Sovereign Gold Bond – Edit Asset Screen Changes
+
+The current Edit Asset screen should be updated to remove the editable Invested Amount and Current Value fields. Users should instead be able to edit Bonds Held (Units), Issue Price (₹/Bond), Issue / Purchase Date, Maturity Date, Coupon Rate (%), and Notes. Any changes to the bond quantity or issue price should automatically recalculate the Invested Amount, while the Current Value should continue to be derived from the latest market price retrieved through market data APIs. The Bond Name, ISIN Code, and NSE/BSE Ticker should remain unchanged after asset creation, as they uniquely identify the Sovereign Gold Bond series.
+
+13) Fixed Deposit : 
+
+Fixed Deposit – Add Asset Screen Changes
+
+The current Add Asset screen should be updated to remove the Maturity Value input field, as it can be automatically calculated using the Principal Amount, Interest Rate, Start Date, and Maturity Date. The form should collect Bank Name, FD Account Number (Optional), Nominee (Optional), Principal Amount, Interest Rate (%), Start Date, Maturity Date, and Notes. The system should automatically calculate the Maturity Value and current accrued value based on the FD tenure and interest details entered by the user.
+
+Fixed Deposit – Edit Asset Screen Changes
+
+The current Edit Asset screen should be redesigned to remove the generic Quantity, Invested Amount, and Current Value fields. Instead, users should be able to edit Principal Amount, Interest Rate (%), Start Date, Maturity Date, Nominee, and Notes. Any changes to the principal, interest rate, or tenure should automatically recalculate the Maturity Value and current accrued value. The Bank Name and FD Account Number should remain unchanged after asset creation, as they are used to identify the fixed deposit record.
+
+14) PPF : 
+
+PPF – Add Asset Screen Changes
+
+The current Add Asset screen should be updated to remove the Current Value input field, as it can be calculated by the system using the Total Invested Amount, Current Interest Rate, and account details. The form should collect Account / Bank Name, Nominee (Optional), Total Invested Amount, Current Interest Rate (%), Account Opening Date, Monthly Contribution Amount (Optional), and Notes. The Regular Monthly Contribution Active checkbox should remain available and the Monthly Contribution Amount field should be displayed only when regular contributions are enabled. The system should automatically calculate the Current Value and portfolio metrics based on the account information provided.
+
+PPF – Edit Asset Screen Changes
+
+The current Edit Asset screen should be redesigned to remove the generic Quantity, Invested Amount, and Current Value fields. Instead, users should be able to edit Total Invested Amount, Current Interest Rate (%), Account Opening Date, Regular Monthly Contribution Active status, Monthly Contribution Amount, Nominee, and Notes. Users should also be able to enable, disable, pause, or modify the monthly contribution amount. Any changes to the invested amount, interest rate, or contribution settings should automatically refresh the current valuation and portfolio metrics.
+
+PPF – Asset Table Display Logic
+
+If Regular Monthly Contribution is active:
+Display → Monthly Contribution ₹<Amount>/mo
+
+Example:
+Monthly Contribution ₹5,000/mo
+
+If regular contributions were never configured:
+Display → No Active Contribution
+
+Example:
+No Active Contribution
+
+If a previously active contribution is disabled:
+Display → Contribution Paused
+
+Example:
+Contribution Paused
+
+
+15) Date Validation Requirements
+
+Asset Date Validation - 
+For asset acquisition dates such as Investment Date, Purchase Date, Issue Date, Start Date, and Account Opening Date, users should not be allowed to select a date later than the current system date. The current date should be permitted, as users may add assets on the same day they were purchased or created.
+
+Maturity Date Validation -
+For assets that contain a maturity period, such as Fixed Deposits and Sovereign Gold Bonds, the Maturity Date must be later than the corresponding Start Date, Issue Date, or Purchase Date. Future maturity dates should be allowed, as they represent the scheduled completion date of the investment.
+
+Date of Birth Validation -
+During user registration, the Date of Birth must be earlier than the current system date. Users should not be allowed to select today's date or any future date.
+
+
+16) Asset Details Screen Requirement - 
+For all asset types, selecting an asset from the asset table should open the corresponding Asset Details screen. This screen should display all information associated with the selected asset, including all user-entered fields, asset-specific details, uploaded documents or images (where applicable), and system-calculated values such as current valuation, invested amount, profit/loss, and performance metrics.
+
+17) Dynamic Benchmark Allocation Requirement :
+
+The Current vs Recommended Allocation chart in the Assets page should use dynamic benchmark allocations instead of fixed percentages. During user registration, the system should determine the investor profile based on the user's age and automatically classify the user as Conservative, Moderate, or Aggressive. Based on the assigned profile, the application should apply a predefined benchmark allocation model and compare the user's actual portfolio allocation against the recommended allocation. The benchmark should be recalculated whenever the user's profile changes, ensuring that portfolio recommendations remain relevant throughout different stages of the user's investment journey.
+
+Recommended Benchmark Allocations
+
+| Asset Type            | Conservative | Moderate | Aggressive |
+| --------------------- | ------------ | -------- | ---------- |
+| Equity                | 20%          | 35%      | 60%        |
+| Mutual Fund           | 20%          | 30%      | 20%        |
+| Fixed Deposit         | 35%          | 15%      | 5%         |
+| PPF                   | 15%          | 10%      | 5%         |
+| Sovereign Gold Bond   | 5%           | 5%       | 5%         |
+| Digital/Physical Gold | 5%           | 5%       | 5%         |
+| Real Estate           | Optional     | Optional | Optional   |
+
+Suggested Profile Classification
+
+Age < 30 Years:
+Aggressive Investor
+
+Age 30 – 50 Years:
+Moderate Investor
+
+Age > 50 Years:
+Conservative Investor
+
+As the Recommended Benchmark value for the Real Estate is optional, Real Estate assets should be excluded from the drift score calculation, as property valuations are manually maintained, updated less frequently, and may not accurately reflect real-time market conditions. However, Real Estate should continue to be displayed in the overall portfolio allocation and valuation summaries.
+
+18) Update the Bulk Upload Section in the Assets Page to accomodate the above necessary changes.

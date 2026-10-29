@@ -1,0 +1,12 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Local app data / build artifacts
+*.db
+*.db-wal
+*.db-shm
+dist/
+build/
+*.spec

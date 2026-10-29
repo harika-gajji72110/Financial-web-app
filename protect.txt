@@ -1,0 +1,941 @@
+You are a senior product designer, UX strategist, and solution architect for a modern personal finance and wealth management application.
+
+
+
+Design a brand-new module called **“Protect”** for the application.
+
+
+
+## Module Purpose
+
+The purpose of the Protect module is to help users:
+
+- Manage insurance policies
+
+- Track financial protection coverage
+
+- Store policy documents
+
+- Monitor renewals and premium due dates
+
+- Identify coverage gaps
+
+- Improve overall financial protection readiness
+
+
+
+The final output should feel like a **modern personal insurance management and financial protection platform fully integrated into a wealth management application**.
+
+
+
+---
+
+
+
+# IMPORTANT DESIGN GOALS
+
+1. Create a premium, modern, intuitive user experience.
+
+2. Make the system feel trustworthy, organized, and actionable.
+
+3. Prioritize a mobile-first responsive design while also supporting desktop.
+
+4. Ensure the module helps users understand whether they are financially protected.
+
+5. Include visual indicators for active, expiring, due soon, renewed, and lapsed policies.
+
+6. Include strong document management capability.
+
+7. Include advanced but understandable protection insights and recommendations.
+
+8. Include the ability to manage policies for self and family members if relevant.
+
+
+
+---
+
+
+
+# CRITICAL REQUIREMENTS TO INCLUDE
+
+
+
+## 1) Insurance Dashboard
+
+Create a dashboard that displays high-level summary cards for:
+
+- Total Life Insurance Coverage
+
+- Total Health Insurance Coverage
+
+- Total Annual Premiums
+
+- Upcoming Premium Payments
+
+- Policies Expiring Soon
+
+- Protection Score
+
+
+
+Also include:
+
+- Insurance coverage distribution chart across policy types
+
+- Annual premium trends chart
+
+- Visual reminders/alert banners for expiring or unpaid items
+
+- Quick actions section
+
+
+
+**Must include a very visible “Add Insurance” button** on the dashboard for fast policy creation.
+
+
+
+---
+
+
+
+## 2) Insurance Portfolio Management
+
+Design portfolio management to allow users to:
+
+- Add policies
+
+- View policies
+
+- Edit policies
+
+- Delete policies
+
+- Search and filter policies
+
+
+
+Supported policy categories:
+
+- Life Insurance
+
+- Health Insurance
+
+- Vehicle Insurance
+
+- Home / Property Insurance
+
+- Personal Accident Insurance
+
+- Travel Insurance
+
+- Other Insurance
+
+
+
+For each policy, collect the following fields:
+
+- Policy Type
+
+- Policy Name
+
+- Insurance Provider
+
+- Policy Number
+
+- **Policy Holder Name**
+
+- Coverage Amount / Sum Assured
+
+- Premium Amount
+
+- Premium Frequency
+
+- Policy Start Date
+
+- Policy Expiry Date
+
+- Nominee Name
+
+- Nominee Relationship
+
+- Notes
+
+
+
+Also suggest any additional useful optional fields such as:
+
+- Claim settlement ratio (if available)
+
+- Policy status
+
+- Riders / add-ons
+
+- Insured members
+
+- Renewal type
+
+- Auto-pay enabled
+
+- Grace period
+
+- Tax benefit category
+
+- Contact details of insurer / advisor
+
+
+
+**Must include “Add Insurance” button in the portfolio section also.**
+
+
+
+---
+
+
+
+## 3) Policy Details Screen
+
+When a user selects a policy, display a dedicated details screen containing:
+
+- Full policy information
+
+- Coverage Amount
+
+- Premium Details
+
+- Policy Holder Name
+
+- Nominee Information
+
+- Remaining Policy Duration
+
+- Upcoming Renewal Date
+
+- Uploaded Documents
+
+- Status badge (Active / Expiring Soon / Lapsed / Renewed)
+
+- Timeline/history of edits or renewals if relevant
+
+
+
+Include recommendations or contextual actions such as:
+
+- Renew policy
+
+- Upload missing documents
+
+- Update nominee
+
+- Add rider
+
+- Pay premium
+
+- Mark renewed
+
+
+
+---
+
+
+
+## 4) Document Vault
+
+Design a document vault that supports uploading and managing:
+
+- Policy Documents
+
+- Insurance Certificates
+
+- Claim Documents
+
+- Insurance Cards
+
+- Nominee Documents
+
+
+
+Requirements:
+
+- Single upload
+
+- Bulk upload
+
+- Preview documents
+
+- Categorize documents
+
+- Tag documents by policy
+
+- Search documents
+
+- Download documents
+
+- Replace outdated documents
+
+- Show missing required documents
+
+
+
+The UX should make document organization easy and secure.
+
+
+
+---
+
+
+
+## 5) Protection Score
+
+Create a financial **Protection Score** that is calculated using:
+
+- Life Insurance Coverage Adequacy
+
+- Health Insurance Coverage
+
+- Emergency Fund Availability
+
+- Critical Illness Coverage
+
+- Overall Insurance Diversification
+
+
+
+Display:
+
+- Total score
+
+- Score breakdown by factor
+
+- Clear explanation of what the score means
+
+- Prioritized recommendations to improve protection levels
+
+
+
+Recommendations should be practical and personalized.
+
+
+
+---
+
+
+
+## 6) Coverage Gap Analysis
+
+Design a section that compares existing insurance coverage against recommended coverage levels.
+
+
+
+Examples:
+
+- Current Life Cover vs Recommended Life Cover
+
+- Current Health Cover vs Recommended Health Cover
+
+
+
+Show gaps visually using:
+
+- Progress bars
+
+- Comparison cards
+
+- Charts
+
+- Deficit indicators
+
+- Recommendation callouts
+
+
+
+Also include plain-language explanation of:
+
+- Why a gap matters
+
+- What action the user can take
+
+
+
+---
+
+
+
+## 7) Renewal & Premium Tracking
+
+Create a dedicated section showing:
+
+- Premiums Due Soon
+
+- Policies Expiring Soon
+
+- Recently Renewed Policies
+
+- Lapsed Policies
+
+
+
+Include:
+
+- Reminder indicators
+
+- Notification states
+
+- Payment reminder widgets
+
+- Escalation indicators for lapsed coverage
+
+- Renewal CTA buttons
+
+
+
+Design this so it is easy for users to avoid missing coverage renewals.
+
+
+
+---
+
+
+
+## 8) Search & Filtering
+
+Allow users to filter policies by:
+
+- Policy Type
+
+- Insurance Provider
+
+- Expiry Status
+
+- Premium Frequency
+
+
+
+Also include:
+
+- Search by policy number
+
+- Search by policy holder name
+
+- Search by nominee name
+
+- Sort by premium amount, expiry date, latest added, coverage amount
+
+
+
+---
+
+
+
+## 9) User Experience Requirements
+
+The module must include:
+
+- Dedicated policy details view
+
+- Responsive design
+
+- Easy document management
+
+- Visual indicators for active, expiring, and lapsed policies
+
+- Fast actions from list and dashboard
+
+- Clean information hierarchy
+
+- Modern, premium visual design aligned to a wealth management platform
+
+
+
+---
+
+
+
+# AGE-BASED INSIGHTS REQUIREMENT
+
+Include **insights and recommendations based on the age or life stage of the person**, but do so thoughtfully and responsibly.
+
+
+
+The module should generate age-aware protection guidance such as:
+
+- Younger adults may need starter health cover, personal accident cover, and emergency protection
+
+- Early family stage users may need stronger life cover, family health insurance, and child/family nominee planning
+
+- Mid-life users may need higher health cover, critical illness cover, home/property protection, and long-term financial continuity planning
+
+- Pre-retirement users may need hospitalization focus, asset protection, reduced liabilities, and legacy/nominee planning
+
+- Senior users may need health continuity, hospitalization optimization, document accessibility, and dependent protection planning
+
+
+
+Important:
+
+- Use age-based insights as **financial education and personalization only**
+
+- Do **not** make it discriminatory
+
+- Treat age as a guidance parameter for coverage recommendations, not as an eligibility or exclusion mechanism
+
+- If date of birth is unavailable, use user-provided age range or life-stage selection
+
+
+
+Please clearly show:
+
+1. Where age is captured or inferred
+
+2. How age-based insights appear in the UI
+
+3. How recommendations change by life stage
+
+4. What disclaimers and privacy safeguards should exist
+
+
+
+---
+
+
+
+# ARCHITECTURE CHANGE REQUIREMENT
+
+In addition to UX and product design, include a detailed **architecture change proposal** required to support this new Protect module in an existing wealth management application.
+
+
+
+Please include the following:
+
+
+
+## A. Frontend Architecture Changes
+
+- New Protect module entry point in app navigation
+
+- New routes/screens:
+
+  - Protect Dashboard
+
+  - Insurance Portfolio
+
+  - Policy Details
+
+  - Add/Edit Policy
+
+  - Document Vault
+
+  - Protection Score
+
+  - Coverage Gap Analysis
+
+  - Renewals & Premium Tracking
+
+- Reusable components:
+
+  - Summary cards
+
+  - Policy cards
+
+  - Status badges
+
+  - Premium due widgets
+
+  - Renewal banners
+
+  - Upload manager
+
+  - Recommendation panel
+
+  - Coverage gap visualizers
+
+  - Protection score breakdown card
+
+- State management requirements
+
+- Form validation requirements
+
+- Responsive behavior for mobile/tablet/desktop
+
+
+
+## B. Backend / Service Architecture Changes
+
+Propose services or modules such as:
+
+- Policy Management Service
+
+- Document Management Service
+
+- Protection Score Engine
+
+- Coverage Gap Analysis Engine
+
+- Renewal & Reminder Service
+
+- Notification Service
+
+- Insights / Recommendation Engine
+
+- Audit & Activity Logging module
+
+
+
+Describe responsibilities of each service and interactions between them.
+
+
+
+## C. Data Model / Schema Changes
+
+Propose the database entities and relationships required.
+
+
+
+Must include at minimum:
+
+- User
+
+- Policy
+
+- Policy Holder
+
+- Nominee
+
+- Premium Schedule
+
+- Policy Document
+
+- Renewal Record
+
+- Reminder / Notification
+
+- Protection Score Snapshot
+
+- Coverage Recommendation
+
+- Coverage Gap Record
+
+
+
+For the Policy entity, explicitly include:
+
+- Policy Holder Name
+
+- Policy Type
+
+- Policy Name
+
+- Insurance Provider
+
+- Policy Number
+
+- Coverage Amount
+
+- Premium Amount
+
+- Premium Frequency
+
+- Policy Start Date
+
+- Policy Expiry Date
+
+- Nominee Name
+
+- Nominee Relationship
+
+- Notes
+
+- Status
+
+- Created At / Updated At
+
+
+
+Also explain whether “Policy Holder” should be:
+
+- just a string field, or
+
+- a linked profile entity to support multiple insured family members
+
+
+
+Recommend the better architecture and explain why.
+
+
+
+## D. API Design
+
+Suggest the API endpoints required, such as:
+
+- Create policy
+
+- Update policy
+
+- Delete policy
+
+- Get all policies
+
+- Get policy by ID
+
+- Upload document
+
+- Bulk upload documents
+
+- Get renewals due
+
+- Get dashboard summary
+
+- Calculate protection score
+
+- Get coverage gap analysis
+
+- Get age-based recommendations
+
+
+
+Include example request/response objects where useful.
+
+
+
+## E. Notification & Reminder Architecture
+
+Design how reminders should work:
+
+- Premium due reminders
+
+- Expiry reminders
+
+- Missing document reminders
+
+- Lapsed policy alerts
+
+- Recommendation nudges
+
+
+
+Include:
+
+- In-app notifications
+
+- Push notifications
+
+- Email reminders (if applicable)
+
+- Reminder scheduling logic
+
+- Frequency controls / snooze / dismiss
+
+
+
+## F. Security, Privacy, and Compliance Considerations
+
+Because this module contains sensitive financial and insurance documents, include:
+
+- Secure document storage
+
+- Access control
+
+- Audit trail
+
+- Encryption expectations
+
+- Data retention considerations
+
+- PII handling
+
+- Nominee/document privacy
+
+- Safe display of sensitive policy numbers
+
+- Consent considerations for age-based guidance
+
+
+
+---
+
+
+
+# PRODUCT THINKING EXPECTATIONS
+
+Please do not only give feature lists. I want a structured product and architecture output that includes:
+
+1. Product vision
+
+2. Information architecture
+
+3. User flows
+
+4. Screen-by-screen design breakdown
+
+5. Key UI components
+
+6. Protection score logic
+
+7. Coverage gap logic
+
+8. Age-based recommendation logic
+
+9. Architecture changes
+
+10. Data schema changes
+
+11. API suggestions
+
+12. Notification/reminder approach
+
+13. Edge cases and empty states
+
+14. Suggested visual design language
+
+
+
+---
+
+
+
+# BUSINESS & UX DETAILS TO CONSIDER
+
+Please account for the following practical scenarios:
+
+- A user has multiple policies from the same insurer
+
+- A user manages insurance for spouse, children, or parents
+
+- A policy can have more than one uploaded document
+
+- Some policies may be active but expiring soon
+
+- Some policies may lapse due to missed premiums
+
+- Premium frequencies may differ (monthly, quarterly, half-yearly, yearly)
+
+- Some users may not know if their current coverage is adequate
+
+- Users may want to compare their existing cover with recommended cover
+
+- Users may not upload all documents at once
+
+- Some policies may not have nominees yet
+
+- A user may want to search by policy holder name
+
+- A user may want to quickly add a new policy from anywhere using the Add Insurance button
+
+
+
+---
+
+
+
+# DESIGN TONE
+
+The final design should feel:
+
+- Modern
+
+- Premium
+
+- Trustworthy
+
+- Clear
+
+- Insightful
+
+- Calm and financially responsible
+
+- Suitable for a wealth management platform
+
+
+
+---
+
+
+
+# OUTPUT FORMAT
+
+Please provide the answer in the following structure:
+
+
+
+## 1. Executive Summary
+
+## 2. Product Vision for Protect
+
+## 3. Information Architecture / Module Structure
+
+## 4. Dashboard Design
+
+## 5. Insurance Portfolio Management Design
+
+## 6. Policy Details Screen Design
+
+## 7. Document Vault Design
+
+## 8. Protection Score Design & Logic
+
+## 9. Coverage Gap Analysis Design & Logic
+
+## 10. Renewals & Premium Tracking Design
+
+## 11. Search & Filtering Design
+
+## 12. Age-Based Insights and Personalization
+
+## 13. Architecture Changes Required
+
+### 13.1 Frontend Changes
+
+### 13.2 Backend / Service Changes
+
+### 13.3 Database / Schema Changes
+
+### 13.4 API Design
+
+### 13.5 Notification & Reminder Design
+
+### 13.6 Security & Privacy
+
+## 14. Key UI Components
+
+## 15. User Flows
+
+## 16. Empty States / Edge Cases / Error States
+
+## 17. Suggested Visual Design Direction
+
+## 18. Final Recommendations
+
+
+
+Make the response highly detailed, practical, and implementation-oriented.
+
+Where useful, provide:
+
+- bullet points
+
+- tables
+
+- sample schemas
+
+- textual wireframe descriptions
+
+- example recommendation logic
+
+- example protection score formula
+
+- architectural decisions and rationale
+
+
+
+Also, when discussing age-based recommendations, explicitly mention that they are advisory and should respect privacy and user consent.
+
+
+
+Finally, make sure the design explicitly includes:
+
+- **Add Insurance button**
+
+- **Policy Holder Name**
+
+- Family policy support where appropriate
+
+- Seamless integration with wealth management experience
